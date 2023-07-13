@@ -1,8 +1,11 @@
 import express from "express";
+import "dotenv/config.js";
 import http from "http";
 import url from "url";
 import path from "path";
 import { Server } from "socket.io";
+
+import "./dbconnect.js";
 
 const app = express();
 const porta = process.env.porta || 3000;
