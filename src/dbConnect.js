@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import "dotenv/config.js";
 
 const cliente = new MongoClient(process.env.STRING_CONEXAO_DB);
 

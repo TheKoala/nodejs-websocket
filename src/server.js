@@ -1,5 +1,4 @@
 import express from "express";
-import "dotenv/config.js";
 import http from "http";
 import url from "url";
 import path from "path";
