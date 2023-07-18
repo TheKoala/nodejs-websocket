@@ -7,3 +7,13 @@ socket.emit("obter-documentos", (documentos) => {
     inserirLinkDocumento(documento.nome);
   });
 });
+
+socket.on("atualizar-lista-documentos", (nome) => {
+  inserirLinkDocumento(nome);
+});
+
+function emitirAdicionaDocumento(novoDocumento) {
+  socket.emit("adiciona-documento", novoDocumento);
+}
+
+export { emitirAdicionaDocumento };
