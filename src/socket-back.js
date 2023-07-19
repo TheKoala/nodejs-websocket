@@ -2,6 +2,7 @@ import {
   atualizaDocumento,
   criarDocumento,
   encontrarDocumento,
+  excluirDocumento,
   listaDocumentos,
 } from "./documentosDb.js";
 import io from "./server.js";
@@ -43,6 +44,13 @@ io.on("connection", (socket) => {
     if (documento) {
       //"socket.emit("texto_documento", documento.texto);
       devolverTexto(documento.texto);
+    }
+  });
+
+  socket.on("excluir_documento", async (nomeDocumento) => {
+    const resultado = await excluirDocumento(nomeDocumento);
+    if(resultado.deletedCount){
+      io.emit("excluir_documento_sucesso", nomeDocumento);
     }
   });
 
