@@ -12,6 +12,10 @@ socket.on("atualizar-lista-documentos", (nome) => {
   inserirLinkDocumento(nome);
 });
 
+socket.on("documento-existente", (nome) => {
+  alert(`O documento ${nome} já existe!`);
+});
+
 function emitirAdicionaDocumento(novoDocumento) {
   socket.emit("adiciona-documento", novoDocumento);
 }

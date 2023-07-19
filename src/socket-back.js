@@ -15,9 +15,14 @@ io.on("connection", (socket) => {
   });
 
   socket.on("adiciona-documento", async (novoDocumento) => {
-    const resultado = await criarDocumento(novoDocumento);
-    if(resultado.acknowledged) {
-      io.emit("atualizar-lista-documentos", novoDocumento);
+    const documentoExiste = (await encontrarDocumento(novoDocumento)) !== null;
+    if (documentoExiste) {
+      io.emit("documento-existente", novoDocumento);
+    } else {
+      const resultado = await criarDocumento(novoDocumento);
+      if (resultado.acknowledged) {
+        io.emit("atualizar-lista-documentos", novoDocumento);
+      }
     }
   });
 
