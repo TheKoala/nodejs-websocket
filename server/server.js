@@ -4,8 +4,6 @@ import url from "url";
 import path from "path";
 import { Server } from "socket.io";
 
-import "./dbconnect.js";
-
 const app = express();
 const porta = process.env.porta || 3000;
 const caminhoAtual = url.fileURLToPath(import.meta.url);

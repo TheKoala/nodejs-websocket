@@ -12,7 +12,7 @@ form.addEventListener("submit", (event) => {
 
 function inserirLinkDocumento(nomeDocumento) {
   listaDocumentos.innerHTML += `
-    <a href="documento.html?nome=${nomeDocumento}" 
+    <a href="documento/index.html?nome=${nomeDocumento}" 
       class="list-group-item list-group-item-action" 
       id="documento-${nomeDocumento}">     
       ${nomeDocumento}
