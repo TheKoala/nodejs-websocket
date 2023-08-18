@@ -18,7 +18,12 @@ socket.on("documento-existente", (nome) => {
 
 socket.on("excluir_documento_sucesso", (nome) => {
   removerDocumentoLista(nome);
-})
+});
+
+socket.on("connect_error", (erro) => {
+  alert(erro);
+  window.location.href = "/login/"
+});
 
 function emitirAdicionaDocumento(novoDocumento) {
   socket.emit("adiciona-documento", novoDocumento);

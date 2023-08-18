@@ -5,6 +5,14 @@ import registrarEventosInicio from "./events/inicio.js";
 import registrarEventosLogin from "./events/login.js";
 import io from "./server.js";
 
+io.use((socket, next) => {
+  next();
+})
+
+io.use((socket, next) => {
+  next(new Error("usuario não logado"));
+})
+
 io.on("connection", (socket) => {
   registrarEventosDocumentos(socket, io);
   registrarEventosInicio(socket, io);
