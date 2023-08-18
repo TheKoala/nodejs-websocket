@@ -1,6 +1,7 @@
 import { inserirLinkDocumento, removerDocumentoLista } from "./index.js";
+import { obterCookie } from "./utils/cookies.js";
 
-const socket = io();
+const socket = io("/usuarios", { auth: { token: obterCookie("tokenJwt") } });
 
 socket.emit("obter-documentos", (documentos) => {
   documentos.forEach((documento) => {
@@ -22,7 +23,7 @@ socket.on("excluir_documento_sucesso", (nome) => {
 
 socket.on("connect_error", (erro) => {
   alert(erro);
-  window.location.href = "/login/"
+  window.location.href = "/login/";
 });
 
 function emitirAdicionaDocumento(novoDocumento) {
